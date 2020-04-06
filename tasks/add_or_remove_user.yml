@@ -1,0 +1,16 @@
+- name: Add user
+  when: 
+    - item.user not in uberspace_mail_user_result.stdout_lines
+    - (item.state | default('present')).lower() == 'present'
+  command: 
+    cmd: "uberspace mail user add {{ item.user }}"
+    stdin: |
+      {{ item.password }}
+      {{ item.password }}
+
+- name: Remove user
+  when: 
+    - item.user in uberspace_mail_user_result.stdout_lines
+    - (item.state | default('present')).lower() == 'absent'
+  command: 
+    cmd: "uberspace mail user del {{ item.user }}"

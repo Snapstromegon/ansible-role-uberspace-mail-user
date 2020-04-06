@@ -1,0 +1,9 @@
+- name: Read existing users
+  command: uberspace mail user list
+  register: uberspace_mail_user_result
+  failed_when: uberspace_mail_user_result.rc != 0
+  changed_when: false
+
+- name: Update User State
+  include_tasks: add_or_remove_user.yml
+  loop: "{{ users + ([{'user': user, 'state': state}] if user else []) }}"
