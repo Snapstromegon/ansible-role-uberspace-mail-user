@@ -1,0 +1,22 @@
+galaxy_info:
+  role_name: uberspace-mail-user
+  author: Raphael Höser
+  description: Manage mailboxes of your uberspace.
+
+  license: ISC
+
+  min_ansible_version: 2.5
+
+  platforms:
+  - name: Uberspace
+    versions:
+    - 7
+
+  galaxy_tags:
+    - uberspace
+    - mail
+    - user
+    - mailbox
+    - mailboxes
+
+dependencies: []
